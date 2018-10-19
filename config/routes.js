@@ -45,14 +45,37 @@ function register(req, res) {
         .first()
         .then(user => {
           const token = makeToken(user);
-          res.status(201).json({ id: user.id, token });
+          res.status(201).json({
+            id: user.id,
+            token,
+            message: "Your registration was successful!"
+          });
         })
         .catch(err => res.status(500).send(err));
     });
 }
 
 //Login a Registered User
-function login(req, res) {}
+function login(req, res) {
+  const { username, password } = req.body;
+  const creds = { username, password };
+
+  db("users")
+    .where({ username: creds.username })
+    .first()
+    .then(user => {
+      if (user && bcrypt.compareSync(creds.password, user.password)) {
+        const token = makeToken(user);
+
+        res.status(200).json({ token });
+      } else {
+        res
+          .status(401)
+          .json({ message: "Your username or password is incorrect." });
+      }
+    })
+    .catch(err => res.status(500).send(err));
+}
 
 //Get Dad Jokes upon successful login
 function getJokes(req, res) {
