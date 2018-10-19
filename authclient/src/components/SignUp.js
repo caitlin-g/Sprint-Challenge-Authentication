@@ -23,15 +23,6 @@ class SignUp extends Component {
             />
           </div>
           <div>
-            <label>Department:</label>
-            <input
-              name="department"
-              value={this.state.department}
-              onChange={this.handleChange}
-              type="text"
-            />
-          </div>
-          <div>
             <label>Password:</label>
             <input
               name="password"

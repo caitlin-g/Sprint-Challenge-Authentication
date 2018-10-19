@@ -4,6 +4,9 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import Home from "./components/Home";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
+import Jokes from "./components/Jokes";
 
 class App extends Component {
   render() {
@@ -32,6 +35,9 @@ class App extends Component {
           </nav>
         </header>
         <Route exact path="/" component={Home} />
+        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/jokes" component={Jokes} />
       </div>
     );
   }
