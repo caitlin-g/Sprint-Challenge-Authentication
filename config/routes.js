@@ -12,8 +12,10 @@ module.exports = server => {
   server.post("/api/register", register);
   server.post("/api/login", login);
   server.get("/api/jokes", authenticate, getJokes);
-  server.get("/api/users", getUsers);
+  server.get("/api/users", authenticate, getUsers);
 };
+
+const secret = "Why can’t banks keep secrets? There are too many tellers!";
 
 //Function to make a JSON Web Token
 function makeToken(user) {
