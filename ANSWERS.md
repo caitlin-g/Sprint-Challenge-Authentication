@@ -4,7 +4,7 @@
    Sessions allow data to be persisted on the server.
 
 2. What does bcrypt do to help us store passwords in a secure manner.
-   Bcrypt hashes passwords in multiple rounds.
+   Bcrypt hashes passwords in multiple rounds. Hashing makes storing passwords more secure because it is a one way process.
 
 3. What does bcrypt do to slow down attackers?
    Bcrypt uses multiple rounds of hashing to slow down attackers. This makes the password more secure because the hacker would have to know the hash, algorithm, and how many rounds the password was hashed in order to steal the password.

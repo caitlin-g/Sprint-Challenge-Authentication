@@ -47,11 +47,16 @@ function register(req, res) {
         .first()
         .then(user => {
           const token = makeToken(user);
-          res.status(201).json({
-            id: user.id,
-            token,
-            message: "Your registration was successful!"
-          });
+          res
+            .status(201)
+            .json({
+              id: user.id,
+              token,
+              message: "Your registration was successful!"
+            })
+            .catch(err =>
+              res.status(500).json({ err: "User could not be registered" })
+            );
         })
         .catch(err => res.status(500).send(err));
     });
